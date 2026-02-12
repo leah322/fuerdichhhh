@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday!</title>
+<p class="subtitle">Ich wünsche dir alles Liebe zu deinem 21. Geburtstag! 💖</p>
+
+  <style>
+
+
+    body {
+      background: linear-gradient(to top right, #CCFFFF, #bae1ff);
+      text-align: center;
+      font-family: 'Comic Sans MS', cursive;
+      color: #6699FF;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 60px;
+      margin-top: 100px;
+      animation: pop 1s ease-out infinite alternate;
+    }
+	.subtitle {
+  font-size: 24px;
+  color: white;
+}
+animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+	
+    @keyframes pop {
+      from {transform: scale(1);}
+      to {transform: scale(1.1);}
+    }
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      background: red;
+      border-radius: 50%;
+      animation: rise 8s linear infinite;
+    }
+    @keyframes rise {
+      0% {transform: translateY(0);}
+      100% {transform: translateY(-110vh);}
+    }
+	
+	.confetti {
+  position: absolute;
+  top: -10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(110vh);
+  }
+}
+
+.wall {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.frame {
+  position: absolute;
+  background: #e5e5e5;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 2px #bfc1c2,
+    0 8px 20px rgba(0,0,0,0.3);
+}
+
+.frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: white;
+}
+
+/* Dunkler Hintergrund */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Großes Bild */
+.overlay img {
+  max-width: 80%;
+  max-height: 80%;
+  border: 10px solid silver;
+  background: white;
+  border-radius: 10px;
+}
+
+.subtitle {
+  font-size: 24px;
+  color: white;
+}
+
+
+  </style>
+</head>
+<body>
+  <h1>🎉 Happy Birthday, Finn! 🎈</h1>
+
+<div class="wall">
+
+  <!-- Rahmen 1 (groß) -->
+  <div class="frame" style="top: 180px; left: 15%; width: 260px; height: 180px;">
+    <img src="bild1.jpg" alt="Bild 1">
+  </div>
+
+  <!-- Rahmen 2 (mittel) -->
+  <div class="frame" style="top: 120px; left: 50%; width: 200px; height: 140px;">
+    <img src="bild2.jpg" alt="Bild 2">
+  </div>
+
+  <!-- Rahmen 3 (klein) -->
+  <div class="frame" style="top: 260px; left: 75%; width: 160px; height: 110px;">
+    <img src="bild3.jpg" alt="Bild 3">
+  </div>
+
+</div>
+
+
+  <!-- Ballons -->
+  <div class="balloon" style="left:20%; background: #ff6b6b; animation-delay: 0.5s;"></div>
+  <div class="balloon" style="left:60%; background: #feca57; animation-delay: 1.5s;"></div>
+  <div class="balloon" style="left:40%; background: #1dd1a1; animation-delay: 3s;"></div>
+  <div class="balloon" style="left:80%; background: #5f27cd; animation-delay: 0s;"></div>
+
+<!-- Konfetti -->
+<script>
+  for (let i = 0; i < 50; i++) {
+    const confetti = document.createElement("div");
+    confetti.classList.add("confetti");
+
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.backgroundColor =
+      "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+    confetti.style.animationDuration =
+      Math.random() * 3 + 3 + "s";
+
+    document.body.appendChild(confetti);
+  }
+</script>
+
+  <!-- Musik -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2023/02/27/audio_5f9fba69e9.mp3?filename=happy-birthday-to-you-piano-13975.mp3" type="audio/mpeg">
+  </audio>
+  
+  <div class="overlay" id="overlay">
+  <img id="overlayImage">
+</div>
+
+<script>
+  const frames = document.querySelectorAll(".frame img");
+  const overlay = document.getElementById("overlay");
+  const overlayImage = document.getElementById("overlayImage");
+
+  frames.forEach(img => {
+    img.addEventListener("click", () => {
+      overlayImage.src = img.src;
+      overlay.style.display = "flex";
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    overlay.style.display = "none";
+  });
+</script>
+
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2023/02/27/audio_5f9fba69e9.mp3?filename=happy-birthday-to-you-piano-13975.mp3" type="audio/mpeg">
+</audio>
+
+
+</body>
+</html>
